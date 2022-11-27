@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesto Russia</title>
+    <link rel="stylesheet" href="pages/index.css">
+</head>
+
+<body class="page">
+    <header class="page__header header">
+      <a href="https://llgrish.github.io/mesto/" class="header__link"><img src="images/logo.svg" alt="Логотип Место" class="header__logo logo"></a>
+    </header>
+
+    <main class="content">
+      <div class="content__profile profile">
+        <img src="images/avatar.jpg" alt="Аватар" class="profile__avatar">
+        <div class="profile__info">
+          <div class="profile__heading">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <button type="button" class="button button_type_edit"></button>
+          </div>
+          <p class="profile__description">Исследователь океана, ученый</p>
+        </div>
+        <button type="button" class="button button_type_add"></button>
+      </div>
+
+      <section class="content__places places">
+        <ul class="places__list">
+        <li>
+        <article class="place">
+          <img src="./images/adigeya.jpg" alt="Адыгея" class="place__image">
+          <button class="button button_type_remove"></button>
+          <div class="place__heading-content">
+            <h2 class="place__title">Адыгея</h2>
+            <button type="button" class="button button_type_like"></button>
+          </div>
+        </article>
+      </li>
+      
+      <li>
+        <article class="place">
+          <img src="./images/altai.jpg" alt="Алтай" class="place__image">
+          <button class="button button_type_remove"></button>
+          <div class="place__heading-content">
+            <h2 class="place__title">Алтай</h2>
+            <button type="button" class="button button_type_like button_active"></button>
+          </div>
+        </article>
+      </li>
+      
+      <li>
+        <article class="place">
+          <img src="./images/kamchatka.jpg" alt="Камчатка" class="place__image">
+          <button class="button button_type_remove"></button>
+          <div class="place__heading-content">
+            <h2 class="place__title">Камчатка</h2>
+            <button type="button" class="button button_type_like"></button>
+          </div>
+        </article>
+      </li>
+      
+      <li>
+        <article class="place">
+          <img src="./images/sheregesh.jpg" alt="Шерегеш" class="place__image">
+          <button class="button button_type_remove"></button>
+          <div class="place__heading-content">
+            <h2 class="place__title">Шерегеш</h2>
+            <button type="button" class="button button_type_like"></button>
+          </div>
+        </article>
+      </li>
+      
+      <li>
+        <article class="place">
+          <img src="./images/murmansk.jpg" alt="Мурманск" class="place__image">
+          <button class="button button_type_remove"></button>
+          <div class="place__heading-content">
+            <h2 class="place__title">Мурманск</h2>
+            <button type="button" class="button button_type_like"></button>
+          </div>
+        </article>
+      </li>
+      
+      <li>
+        <article class="place">
+          <img src="./images/siberia.jpg" alt="Сибирь" class="place__image">
+          <button class="button button_type_remove"></button>
+          <div class="place__heading-content">
+            <h2 class="place__title">Сибирь</h2>
+            <button type="button" class="button button_type_like"></button>
+          </div>
+        </article>
+      </li>
+        </ul>
+      </section>
+    </main>
+    
+    <footer class="page__footer footer">
+      <p class="footer__text">© 2022 Mesto Russia</p>
+    </footer>
+
+    <div class="popup popup_type_edit">
+      <div class="popup__container">
+        <form action="#" name="userData" class="form_userData popup__form form" novalidate="">
+          <h2 class="form__title">Редактировать профиль</h2>
+          <input required="" minlength="2" maxlength="40" type="text" name="userName" class="form__input form__input_type_name" id="name-input" placeholder="Имя">
+          <span class="form__input-error name-input-error"></span>
+          <input required="" minlength="2" maxlength="200" type="text" name="userPost" class="form__input form__input_type_post" id="post-input" placeholder="О себе">
+          <span class="form__input-error post-input-error"></span>
+          <button type="submit" class="button button_type_submit">
+            <span class="button__text">Сохранить</span>
+          </button>
+          <button type="button" class="button button_type_close"></button>
+        </form>
+      </div>
+    </div>
+
+    <template id="place">
+      <li>
+        <article class="place">
+          <img src="#" alt="github" class="place__image">
+          <button class="button button_type_remove"></button>
+          <div class="place__heading-content">
+            <h2 class="place__title"></h2>
+            <button type="button" class="button button_type_like"></button>
+          </div>
+        </article>
+      </li>
+    </template>
+  
+    <script type="module" src="./scripts/index.js"></script>
+  
+  </body>
+</html>
