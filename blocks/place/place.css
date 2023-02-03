@@ -1,0 +1,11 @@
+.place {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding-bottom: 25px;
+}
+
+@media screen and (min-width: 1024px) {
+  .place {
+    max-width: 282px;
+  }
+}
