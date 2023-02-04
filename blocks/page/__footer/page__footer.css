@@ -10,7 +10,7 @@
 
 @media screen and (min-width: 1024px) {
   .page__footer {
-    max-width: 880px;
     margin: 0 auto 36px;
+    max-width: 880px;
   }
 }

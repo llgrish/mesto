@@ -1,4 +1,4 @@
-.profile__title {
+.profile__name {
   overflow: hidden;
   line-height: 33px;
   margin: 0 0 0 27px;
@@ -13,7 +13,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .profile__title {
+  .profile__name {
     line-height: 40px;
     font-size: 35px;
     max-width: 294px;
@@ -22,7 +22,7 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .profile__title {
+  .profile__name {
     line-height: 48px;
     font-size: 42px;
   }

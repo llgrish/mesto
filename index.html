@@ -12,55 +12,90 @@
 <body class="page">
 
   <header class="page__header header">
-    <a href="https://llgrish.github.io/mesto/" class="header__link"><img src="images/logo.svg" alt="Логотип Место"
+    <img src="images/logo.svg" alt="Логотип Место"
         class="header__logo logo"></a>
   </header>
 
   <main class="content">
-    <div class="content__profile profile">
-      <img src="images/avatar.jpg" alt="Автарака пользователя" class="profile__avatar">
+    <section class="content__profile profile">
+      <img src="images/avatar.jpg" alt="Аватарка" class="profile__avatar">
       <div class="profile__info">
         <div class="profile__heading">
-          <h1 class="profile__title">Жак-Ив Кусто</h1>
-          <button type="button" class="button button_type_edit"></button>
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button class="profile__edit-button" type="button"></button>
         </div>
-        <p class="profile__description">Исследователь океана</p>
+        <p class="profile__activity">Исследователь океана</p>
       </div>
-      <button type="button" class="button button_type_add"></button>
-    </div>
+      <button class="profile__add-button" type="button"></button>
+    </section>
+
     <section class="content__places places">
       <ul class="places__list">
+        <li class="place">
+          <img class="place__image" src="./images/adigeya.jpg" alt="Адыгея">
+          <div class="place__content">
+            <h2 class="place__title">Адыгея</h2>
+            <button class="place__like" type="button"></button>
+          </div>
+        </li>
+        <li class="place">
+          <img class="place__image" src="./images/altai.jpg" alt="Алтай">
+          <div class="place__content">
+            <h2 class="place__title">Алтай</h2>
+            <button class="place__like" type="button"></button>
+          </div>
+        </li>
+        <li class="place">
+          <img class="place__image" src="./images/kamchatka.jpg" alt="Камчатка">
+          <div class="place__content">
+            <h2 class="place__title">Камчатка</h2>
+            <button class="place__like" type="button"></button>
+          </div>
+        </li>
+        <li class="place">
+          <img class="place__image" src="./images/murmansk.jpg" alt="Мурманск">
+          <div class="place__content">
+            <h2 class="place__title">Мурманск</h2>
+            <button class="place__like" type="button"></button>
+          </div>
+        </li>
+        <li class="place">
+          <img class="place__image" src="./images/sheregesh.jpg" alt="Шерегеш">
+          <div class="place__content">
+            <h2 class="place__title">Шерегеш</h2>
+            <button class="place__like" type="button"></button>
+          </div>
+        </li>
+        <li class="place">
+          <img class="place__image" src="./images/siberia.jpg" alt="Сибирь">
+          <div class="place__content">
+            <h2 class="place__title">Сибирь</h2>
+            <button class="place__like" type="button"></button>
+          </div>
+        </li>
       </ul>
-    </section>
+      </section>
+
+
   </main>
 
-  <footer class="page__footer footer">
-    <p class="footer__text">&copy; 2023 Mesto Russia</p>
-  </footer>
-
-  <div class="popup">
+  <section class="popup">
+    <button class="popup__close" type="button" aria-label="Закрыть окно редактирования"></button>
     <div class="popup__container">
-      <form action="#" name="userData" class="popup__form form">
-        <h2 class="form__title">Редактировать профиль</h2>
-        <input type="text" name="userName" class="form__input form__input_type_name">
-        <input type="text" name="userPost" class="form__input form__input_type_post">
-        <button type="submit" class="button button_type_submit">
-          <span class="button__text">Сохранить</span>
-        </button>
-        <button type="button" class="button button_type_close"></button>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="form">
+        <fieldset class="form__title">
+          <input class="form__field form__field_name" value="" type="text" placeholder="Имя">
+          <input class="form__field form__field_activity" value="" type="text" placeholder="Занятие">
+          <button class="form__save"  type="submit" aria-label="Сохранить профиль">Сохранить</button>
+        </fieldset>
       </form>
     </div>
-  </div>
+  </section>
 
-  <template id="place">
-    <article class="place">
-      <img src="" alt="" class="place__image">
-      <div class="place__heading-content">
-        <h2 class="place__title"></h2>
-        <button type="button" class="button button_type_like"></button>
-      </div>
-    </article>
-  </template>
+  <footer class="page__footer footer">
+    <p class="footer__copy">&copy; 2023 Mesto Russia</p>
+  </footer>
 
   <script src="scripts/index.js"></script>
 
