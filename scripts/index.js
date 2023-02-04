@@ -1,6 +1,3 @@
-let popup = document.querySelector('.popup')
-let closePopupButton = popup.querySelector('.popup__close')
-
 let openPopupButton = document.querySelector('.profile__edit-button')
 let profile = document.querySelector('.profile')
 let titleProfile = profile.querySelector('.profile__name')
