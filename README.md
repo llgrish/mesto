@@ -13,6 +13,7 @@
   - flexbox
   - Grid layout
   - normalize.css
+  - JS
 
 
 
