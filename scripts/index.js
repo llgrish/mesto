@@ -9,7 +9,6 @@ let activityProfile = profile.querySelector('.profile__activity')
 let formField = popup.querySelector('.form')
 let nameInput = formField.querySelector('.form__field_name')
 let activityInput = formField.querySelector('.form__field_activity')
-let saveFormButton = formField.querySelector('.form__save')
 
 
 
