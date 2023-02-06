@@ -7,10 +7,7 @@
 @import url(../blocks/footer/__copy/footer__copy.css);
 
 @import url(../blocks/form/form.css);
-@import url(../blocks/form/__title/form__title.css);
 @import url(../blocks/form/__field/form__field.css);
-@import url(../blocks/form/__field/_activity/form__field_activity.css);
-@import url(../blocks/form/__field/_name/form__field_name.css);
 @import url(../blocks/form/__save/form__save.css);
 
 @import url(../blocks/header/header.css);

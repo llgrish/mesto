@@ -79,16 +79,14 @@
   </main>
 
   <section class="popup">
-    <button class="popup__close" type="button" aria-label="Закрыть окно редактирования"></button>
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="form">
-        <fieldset class="form__title">
-          <input class="form__field form__field_name" value="" type="text" placeholder="Имя">
-          <input class="form__field form__field_activity" value="" type="text" placeholder="Занятие">
+      <form class="form" name="EditProfile">
+          <input class="form__field form__field_name_main" value="" type="text" placeholder="Имя" name="name">
+          <input class="form__field form__field_activity_about" value="" type="text" placeholder="Занятие" name="activity">
           <button class="form__save"  type="submit" aria-label="Сохранить профиль">Сохранить</button>
-        </fieldset>
       </form>
+      <button class="popup__close" type="button" aria-label="Закрыть окно редактирования"></button>
     </div>
   </section>
 
