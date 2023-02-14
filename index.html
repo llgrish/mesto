@@ -29,62 +29,38 @@
     </section>
 
     <section class="content__places places">
-      <ul class="places__list">
-        <li class="place">
-          <img class="place__image" src="./images/adigeya.jpg" alt="Адыгея">
-          <div class="place__content">
-            <h2 class="place__title">Адыгея</h2>
-            <button class="place__like" type="button"></button>
-          </div>
-        </li>
-        <li class="place">
-          <img class="place__image" src="./images/altai.jpg" alt="Алтай">
-          <div class="place__content">
-            <h2 class="place__title">Алтай</h2>
-            <button class="place__like" type="button"></button>
-          </div>
-        </li>
-        <li class="place">
-          <img class="place__image" src="./images/kamchatka.jpg" alt="Камчатка">
-          <div class="place__content">
-            <h2 class="place__title">Камчатка</h2>
-            <button class="place__like" type="button"></button>
-          </div>
-        </li>
-        <li class="place">
-          <img class="place__image" src="./images/murmansk.jpg" alt="Мурманск">
-          <div class="place__content">
-            <h2 class="place__title">Мурманск</h2>
-            <button class="place__like" type="button"></button>
-          </div>
-        </li>
-        <li class="place">
-          <img class="place__image" src="./images/sheregesh.jpg" alt="Шерегеш">
-          <div class="place__content">
-            <h2 class="place__title">Шерегеш</h2>
-            <button class="place__like" type="button"></button>
-          </div>
-        </li>
-        <li class="place">
-          <img class="place__image" src="./images/siberia.jpg" alt="Сибирь">
-          <div class="place__content">
-            <h2 class="place__title">Сибирь</h2>
-            <button class="place__like" type="button"></button>
-          </div>
-        </li>
-      </ul>
-      </section>
-
+      <ul class="places__list"></ul>
+    </section>
 
   </main>
 
-  <section class="popup">
+  <section class="popup popup_new-place">
+    <div class="popup__container">
+      <h2 class="popup__title">Новое место</h2>
+      <form class="form" name="photo-place">
+        <input class="form__field form__field_point" value="" type="text" placeholder="Название" name="photo-place-point">
+        <input class="form__field form__field_url" value="" type="url" placeholder="Ссылка на картинку" name="photo-place-url">
+        <button class="form__save" type="submit" aria-label="Создать новое место">Создать</button>
+      </form>
+      <button class="popup__close" type="button" aria-label="Закрыть добавление нового места"></button>
+    </div>
+  </section>
+
+  <section class="popup popup_place-image">
+    <div class="popup__container popup__container_place-image">
+      <img src="#" alt="#" class="place-image__image">
+      <h2 class="place-image__name"></h2>
+      <button class="popup__close" type="button" aria-label="Закрыть просмотр фото"></button>
+    </div>
+  </section>
+
+  <section class="popup popup_profile">
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="form" name="EditProfile">
-          <input class="form__field form__field_profile_name" value="" type="text" placeholder="Имя" name="name">
-          <input class="form__field form__field_profile_activity" value="" type="text" placeholder="Занятие" name="activity">
-          <button class="form__save"  type="submit" aria-label="Сохранить профиль">Сохранить</button>
+          <input class="form__field form__field_profile_name" value="Жак-Ив Кусто" type="text" placeholder="Имя" name="name">
+          <input class="form__field form__field_profile_activity" value="Исследователь океана" type="text" placeholder="Занятие" name="activity">
+          <button class="form__save" type="submit" aria-label="Сохранить профиль">Сохранить</button>
       </form>
       <button class="popup__close" type="button" aria-label="Закрыть окно редактирования"></button>
     </div>
@@ -93,6 +69,17 @@
   <footer class="page__footer footer">
     <p class="footer__copy">&copy; 2023 Mesto Russia</p>
   </footer>
+
+  <template class="template">
+    <li class="place">
+      <img class="place__image" alt="Картинка места">
+      <div class="place__content">
+        <h2 class="place__title"></h2>
+        <button class="place__like" type="button" aria-label="Лайкнуть место"></button>
+        <button class="place__delete" type="button" aria-label="Удалить место"></button>
+      </div>
+    </li>
+  </template>
 
   <script src="scripts/index.js"></script>
 
