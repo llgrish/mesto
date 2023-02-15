@@ -8,3 +8,8 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
+
+.place__image:hover {
+  opacity: .8;
+  cursor: pointer;
+}

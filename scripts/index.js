@@ -30,8 +30,8 @@ let openPopupButton = document.querySelector('.profile__edit-button')
 let openPopupAddButton = document.querySelector('.profile__add-button')
 
 let popupProfile = document.querySelector('.popup_profile')
-let closePopupProfileButton = popup.querySelector('.popup__close')
-let formFieldProfile = popup.querySelector('.form')
+let closePopupProfileButton = popupProfile.querySelector('.popup__close')
+let formFieldProfile = popupProfile.querySelector('.form')
 let nameInput = formFieldProfile.querySelector('.form__field_profile_name')
 let activityInput = formFieldProfile.querySelector('.form__field_profile_activity')
 
@@ -44,7 +44,7 @@ let urlInput = formFieldPlace.querySelector('.form__field_url')
 let popupPlaceImage = document.querySelector('.popup_place-image')
 let placeImageImage = popupPlaceImage.querySelector('.place-image__image')
 let placeImageName = popupPlaceImage.querySelector('.place-image__name')
-let closePopupImageButton = popup.querySelector('.popup__close')
+let closePopupImageButton = popupPlaceImage.querySelector('.popup__close')
 
 let profile = document.querySelector('.content')
 let nameProfile = profile.querySelector('.profile__name')
@@ -83,6 +83,7 @@ function getPlace(item) {
 
   placeDelete.addEventListener('click', deletePlace);
   placeLike.addEventListener('click', likePlace);
+
   openPopupPlaceImage.addEventListener('click',() => {
     placeImageName.textContent = item.name;
     placeImageImage.src = item.link;
@@ -113,16 +114,16 @@ function renderPlaces() {
   placesList.append(...places);
 }
 
+
 function deletePlace(event) {
   let targetElement = event.target;
-  let targetItem = targetElement.closest('.photo-place');
+  let targetItem = targetElement.closest('.place');
 
   targetItem.remove();
 }
 
 function likePlace(event) {
   let targetElement = event.target;
-
   targetElement.classList.toggle('place__like_active');
 }
 
@@ -142,7 +143,7 @@ closePopupPlaceButton.addEventListener('click',() => {
   togglePopup(popupPhotoPlace);
 });
 closePopupImageButton.addEventListener('click',() => {
-  togglePopup(popupPhotoView);
+  togglePopup(popupPlaceImage);
 });
 formFieldProfile.addEventListener('submit', formSubmitHandler);
 formFieldPlace.addEventListener('submit', formPlaceHandler);
