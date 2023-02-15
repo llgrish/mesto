@@ -56,21 +56,22 @@ function getPlace(item) {
   let newPlace = template.content.cloneNode(true);
   let placeImage = newPlace.querySelector('.place__image');
   let placeTitle = newPlace.querySelector('.place__title');
-  let placeDelete = newPlace.querySelector('.place__delete');
   let placeLike = newPlace.querySelector('.place__like');
   let openPopupPlaceImage = newPlace.querySelector('.place__image');
+  let placeDelete = newPlace.querySelector('.place__delete');
 
   placeImage.src = item.link;
-  placeImage.alt = item.name;
-  placeTitle.textContent = item.name;
 
-  placeDelete.addEventListener('click', deletePlace);
+  placeTitle.textContent = item.name;
+  placeImage.alt = item.name;
   placeLike.addEventListener('click', likePlace);
+  placeDelete.addEventListener('click', deletePlace);
+
 
   openPopupPlaceImage.addEventListener('click',() => {
     placeImageName.textContent = item.name;
-    placeImageImage.src = item.link;
     placeImageImage.alt = item.name;
+    placeImageImage.src = item.link;
     togglePopup(popupPlaceImage);
   });
 
@@ -86,8 +87,9 @@ function deletePlace(event) {
 
 function formPlaceHandler (evt) {
   let pointPlace = pointInput.value;
-  let urlPlace = urlInput.value;
+
   let photoPlace = getPlace({name: pointPlace, link: urlPlace});
+  let urlPlace = urlInput.value;
   evt.preventDefault();
   placesList.prepend(photoPlace);
   pointInput.value = '';
