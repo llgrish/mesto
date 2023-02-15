@@ -1,19 +1,20 @@
 .place__delete {
-    padding: 0;
-    background: none;
-    border: none;
-    position: absolute;
-    height: 19.3px;
-    width: 18px;
-    top: 18px;
-    right: 15px;
-    background-image: url('../../../../images/delete.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
+  background-image: url(../../../images/delete.svg);
+  background-size: cover;
+  width: 18px;
+  height: 19px;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  padding: 0;
+  border: 0;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  transition: opacity 0.2s linear;
   }
   
   .place__delete:hover {
     opacity: .6;
-    cursor: pointer;
   }
   
