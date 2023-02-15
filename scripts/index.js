@@ -37,9 +37,8 @@ let activityInput = formFieldProfile.querySelector('.form__field_profile_activit
 let pointInput = formFieldPlace.querySelector('.form__field_point')
 let urlInput = formFieldPlace.querySelector('.form__field_url')
 
-
-let placeImageImage = popupPlaceImage.querySelector('.place-image__image')
-let placeImageName = popupPlaceImage.querySelector('.place-image__name')
+let placeImageName = popupPlaceImage.querySelector('.popup_place-image__name')
+let placeImageImage = popupPlaceImage.querySelector('.popup_place-image__image')
 let placesList = document.querySelector('.places__list')
 let template = document.querySelector('.template')
 
