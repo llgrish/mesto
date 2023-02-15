@@ -1,15 +1,15 @@
 .place__delete {
+  top: 20px;
+  right: 20px;
   background-image: url(../../../images/delete.svg);
   background-size: cover;
   width: 18px;
   height: 19px;
-  background-repeat: no-repeat;
-  background-color: transparent;
   padding: 0;
   border: 0;
+  background-repeat: no-repeat;
+  background-color: transparent;
   position: absolute;
-  top: 20px;
-  right: 20px;
   cursor: pointer;
   transition: opacity 0.2s linear;
   }

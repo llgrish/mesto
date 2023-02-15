@@ -1,16 +1,16 @@
 .place__like {
+  display: flex;
+  margin-right: 2px;
+  align-self: center;
   background-repeat: no-repeat;
   background-size: cover;
   border: 0;
+  padding: 0;
   width: 22px;
   height: 19px;
   align-items: center;
   cursor: pointer;
-  padding: 0;
-  margin-right: 2px;
   background-color: transparent;
   transition: opacity 0.2s linear;
-  display: flex;
-  align-self: center;
   background-image: url(../../../images/like.svg);
   }

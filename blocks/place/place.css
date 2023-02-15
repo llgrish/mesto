@@ -1,9 +1,9 @@
 .place {
   position: relative;
   max-width: 282px;
-  background-color: white;
+  max-height: 361px;
   overflow: hidden;
   border-radius: 10px;
-  max-height: 361px;
+  background-color: #ffffff;
 }
 
