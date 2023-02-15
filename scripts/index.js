@@ -1,4 +1,4 @@
-let initialCards = [
+const initialCards = [
   { name: 'Адыгея',
     link: './images/adigeya.jpg' },
   { name: 'Алтай',
@@ -13,62 +13,56 @@ let initialCards = [
     link: './images/siberia.jpg' }
 ];
 
-let popup = document.querySelector('.popup')
-let popupProfile = document.querySelector('.popup_profile')
-let popupPhotoPlace = document.querySelector('.popup_new-place')
-let popupPlaceImage = document.querySelector('.popup_place-image')
+const popupMain = document.querySelector('.popup')
+const popupProfile = document.querySelector('.popup_profile')
+const popupPhotoPlace = document.querySelector('.popup_new-place')
+const popupPlaceImage = document.querySelector('.popup_place-image')
 
-let openPopupButton = document.querySelector('.profile__edit-button')
-let openPopupAddButton = document.querySelector('.profile__add-button')
+const popupOpenButton = document.querySelector('.profile__edit-button')
+const popupOpenAddButton = document.querySelector('.profile__add-button')
 
+const popupCloseProfileButton = popupProfile.querySelector('.popup__close')
+const popupClosePlaceButton = popupMain.querySelector('.popup__close')
+const popupCloseImageButton = popupPlaceImage.querySelector('.popup__close')
 
-let closePopupProfileButton = popupProfile.querySelector('.popup__close')
-let closePopupPlaceButton = popup.querySelector('.popup__close')
-let closePopupImageButton = popupPlaceImage.querySelector('.popup__close')
+const profile = document.querySelector('.content')
+const nameProfile = profile.querySelector('.profile__name')
+const activityProfile = profile.querySelector('.profile__activity')
+const formFieldProfile = popupProfile.querySelector('.form')
+const formFieldPlace = popupMain.querySelector('.form')
 
-let profile = document.querySelector('.content')
-let nameProfile = profile.querySelector('.profile__name')
-let activityProfile = profile.querySelector('.profile__activity')
-let formFieldProfile = popupProfile.querySelector('.form')
-let formFieldPlace = popup.querySelector('.form')
+const nameInput = formFieldProfile.querySelector('.form__field_profile_name')
+const activityInput = formFieldProfile.querySelector('.form__field_profile_activity')
+const pointInput = formFieldPlace.querySelector('.form__field_point')
+const urlInput = formFieldPlace.querySelector('.form__field_url')
 
-let nameInput = formFieldProfile.querySelector('.form__field_profile_name')
-let activityInput = formFieldProfile.querySelector('.form__field_profile_activity')
-let pointInput = formFieldPlace.querySelector('.form__field_point')
-let urlInput = formFieldPlace.querySelector('.form__field_url')
-
-
-let placeImageImage = popupPlaceImage.querySelector('.place-image__image')
-let placeImageName = popupPlaceImage.querySelector('.place-image__name')
-let placesList = document.querySelector('.places__list')
-let template = document.querySelector('.template')
-
+const placeImageImage = popupPlaceImage.querySelector('.place-image__image')
+const placeImageName = popupPlaceImage.querySelector('.place-image__name')
+const placesList = document.querySelector('.places__list')
+const template = document.querySelector('.template')
 
 renderPlaces();
 
 function renderPlaces() {
-  let places = initialCards.map(getPlace);
+  const places = initialCards.map(getPlace);
   placesList.append(...places);
 }
 
-
 function getPlace(item) {
-  let newPlace = template.content.cloneNode(true);
-  let placeImage = newPlace.querySelector('.place__image');
-  let placeTitle = newPlace.querySelector('.place__title');
-  let placeLike = newPlace.querySelector('.place__like');
-  let openPopupPlaceImage = newPlace.querySelector('.place__image');
-  let placeDelete = newPlace.querySelector('.place__delete');
+  const newPlace = template.content.cloneNode(true);
+  const placeImage = newPlace.querySelector('.place__image');
+  const placeTitle = newPlace.querySelector('.place__title');
+  const placeLike = newPlace.querySelector('.place__like');
+  const openPopupPlacePhoto = newPlace.querySelector('.place__image');
+  const placeDelete = newPlace.querySelector('.place__delete');
 
   placeImage.src = item.link;
-
   placeTitle.textContent = item.name;
   placeImage.alt = item.name;
   placeLike.addEventListener('click', likePlace);
   placeDelete.addEventListener('click', deletePlace);
 
-
-  openPopupPlaceImage.addEventListener('click',() => {
+  openPopupPlacePhoto.addEventListener('click',() => {
     placeImageName.textContent = item.name;
     placeImageImage.alt = item.name;
     placeImageImage.src = item.link;
@@ -79,52 +73,51 @@ function getPlace(item) {
 }
 
 function deletePlace(event) {
-  let targetElement = event.target;
-  let targetItem = targetElement.closest('.place');
+  const targetElement = event.target;
+  const targetItem = targetElement.closest('.place');
   targetItem.remove();
 }
 
-
 function formPlaceHandler (evt) {
-  let pointPlace = pointInput.value;
+  const pointPlace = pointInput.value;
 
-  let photoPlace = getPlace({name: pointPlace, link: urlPlace});
-  let urlPlace = urlInput.value;
+  const elementPlace = getPlace({name: pointPlace, link: urlPlace});
+  const urlPlace = urlInput.value;
   evt.preventDefault();
-  placesList.prepend(photoPlace);
+  placesList.prepend(elementPlace);
   pointInput.value = '';
   urlInput.value = '';
   togglePopup(popupPhotoPlace);
 }
 
 function likePlace(event) {
-  let targetElement = event.target;
+  const targetElement = event.target;
   targetElement.classList.toggle('place__like_active');
 }
 
-openPopupAddButton.addEventListener('click',() => {
+popupOpenAddButton.addEventListener('click',() => {
   togglePopup(popupPhotoPlace);
 });
-closePopupPlaceButton.addEventListener('click',() => {
+popupClosePlaceButton.addEventListener('click',() => {
   togglePopup(popupPhotoPlace);
 });
-closePopupImageButton.addEventListener('click',() => {
+popupCloseImageButton.addEventListener('click',() => {
   togglePopup(popupPlaceImage);
 });
 
 formFieldPlace.addEventListener('submit', formPlaceHandler);
 
-formFieldProfile.addEventListener('submit', formSubmitHandler);
+formFieldProfile.addEventListener('submit', formProfileHandler);
 
-function formSubmitHandler (evt) {
+function formProfileHandler (evt) {
   evt.preventDefault();
   nameProfile.textContent = nameInput.value;
   activityProfile.textContent = activityInput.value;
   togglePopup(popupProfile);
 }
 
-function togglePopup (pop) {
-  pop.classList.toggle('popup__opened');
+function togglePopup (popup) {
+  popup.classList.toggle('popup__opened');
 }
 
 function upProfileInfo() {
@@ -132,10 +125,10 @@ function upProfileInfo() {
   activityInput.value = activityProfile.textContent;
 }
 
-openPopupButton.addEventListener('click',() => {
+popupOpenButton.addEventListener('click',() => {
   upProfileInfo();
   togglePopup(popupProfile);
 });
-closePopupProfileButton.addEventListener('click',() => {
+popupCloseProfileButton.addEventListener('click',() => {
   togglePopup(popupProfile);
 });
