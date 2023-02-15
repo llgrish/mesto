@@ -16,7 +16,7 @@ let initialCards = [
 let popup = document.querySelector('.popup')
 let popupProfile = document.querySelector('.popup_profile')
 let popupPhotoPlace = document.querySelector('.popup_new-place')
-let popupPlaceImage = document.querySelector('.popup_place-image')
+let popupPlaceImage = document.querySelector('.popup_full')
 
 let openPopupButton = document.querySelector('.profile__edit-button')
 let openPopupAddButton = document.querySelector('.profile__add-button')
@@ -38,8 +38,8 @@ let pointInput = formFieldPlace.querySelector('.form__field_point')
 let urlInput = formFieldPlace.querySelector('.form__field_url')
 
 
-let placeImageImage = popupPlaceImage.querySelector('.place-image_image')
-let placeImageName = popupPlaceImage.querySelector('.place-image_name')
+let placeImageImage = popupPlaceImage.querySelector('.full_image')
+let placeImageName = popupPlaceImage.querySelector('.full_name')
 let placesList = document.querySelector('.places__list')
 let template = document.querySelector('.template')
 
