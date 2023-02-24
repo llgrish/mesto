@@ -13,13 +13,16 @@
   border-radius: 2px;
   border: none;
   box-sizing: border-box;
+  margin: 13px 36px 27px 36px;
 }
 
 @media (max-width: 600px) {
   .form__save {
     font-size: 14px;
     line-height: 17px;
+    width: 238px;
     height: 46px;
+    margin: 45px 22px 15px 22px;
   }
 }
 

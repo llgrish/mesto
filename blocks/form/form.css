@@ -1,11 +1,11 @@
 .form {
   border: none;
   padding: 0;
-  margin: 48px 0 0;
+  /*margin: 48px 0 0;*/
 }
 
 @media screen and (max-width: 640px) {
   .form {
-    margin-top: 75px;
+    /*margin-top: 75px;*/
   }
 }

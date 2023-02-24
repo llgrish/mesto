@@ -56,7 +56,7 @@ const elemFields = {
     errorField.textContent = '';
   };
   
-  const enableValidation = (formSelector) => {
+  const enableValidation = (elemFields) => {
     const formList = Array.from(document.querySelectorAll(formSelector));
 
     formList.forEach((formField) => {
@@ -68,15 +68,13 @@ const elemFields = {
     });
   };
 
-  const toggleButtonState = (inputList, buttonField) => {
-
+  const toggleButtonState = (inputList, buttonElement) => {
     if (hasInvalidInput(inputList)) {
-      buttonField.setAttribute('inactive', true);
-      buttonField.classList.add(buttonDisabledClass);
-
+      buttonElement.setAttribute('disabled', true);
+      buttonElement.classList.add(buttonDisabledClass);
     } else {
-      buttonField.removeAttribute('inactive');
-      buttonField.classList.remove(buttonDisabledClass);
+      buttonElement.removeAttribute('disabled');
+      buttonElement.classList.remove(buttonDisabledClass);
     }
   }
 
@@ -87,5 +85,5 @@ const elemFields = {
     })
   }
   
-  enableValidation(formSelector);
+  enableValidation(elemFields);
   

@@ -1,11 +1,18 @@
 .form__field-error {
-    top: 29px;
-    left: 0;
-    position: absolute;
+    box-sizing: border-box;
     color: #ff0000;
     line-height: 15px;
     font-size: 12px;
     font-weight: 400;
+    width: 358px;
+    min-height: 35px;
+    display: block;
     font-family: 'Inter', Arial, sans-serif;
+    padding: 0;
+    margin: 0 auto;
   }
   
+
+
+
+
