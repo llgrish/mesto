@@ -37,9 +37,15 @@
   <section class="popup popup_new-place">
     <div class="popup__container">
       <h2 class="popup__title">Новое место</h2>
-      <form class="form" name="place">
-        <input class="form__field form__field_point" value="" type="text" placeholder="Название" name="place-point">
-        <input class="form__field form__field_url" value="" type="url" placeholder="Ссылка на картинку" name="place-url">
+      <form class="form" name="place" novalidate>
+        <label class="form__label">
+          <input class="form__field form__field_point" value="" type="text" placeholder="Название" name="place-point" minlength="2" maxlength="30" required>
+          <span class="form__field-error place-point-error"></span>
+        </label>
+        <label class="form__label">
+          <input class="form__field form__field_url" value="" type="url" placeholder="Ссылка на картинку" name="place-url" required>
+          <span class="form__field-error place-url-error"></span>
+        </label>
         <button class="form__save" type="submit" aria-label="Создать новое место">Создать</button>
       </form>
       <button class="popup__close" type="button" aria-label="Закрыть добавление нового места"></button>
@@ -59,9 +65,15 @@
   <section class="popup popup_profile">
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="form" name="EditProfile">
-          <input class="form__field form__field_profile_name" value="Жак-Ив Кусто" type="text" placeholder="Имя" name="name">
-          <input class="form__field form__field_profile_activity" value="Исследователь океана" type="text" placeholder="Занятие" name="activity">
+      <form class="form" name="EditProfile" novalidate>
+        <label class="form__label">
+          <input class="form__field form__field_profile_name" value="Жак-Ив Кусто" type="text" placeholder="Имя" name="name" minlength="2" maxlength="40" required>
+          <span class="form__field-error name-error"></span>
+        </label>
+        <label class="form__label">
+          <input class="form__field form__field_profile_activity" value="Исследователь океана" type="text" placeholder="Занятие" name="activity" minlength="2" maxlength="200" required>
+          <span class="form__field-error activity-error"></span>
+        </label>
           <button class="form__save" type="submit" aria-label="Сохранить профиль">Сохранить</button>
       </form>
       <button class="popup__close" type="button" aria-label="Закрыть окно редактирования"></button>
@@ -83,7 +95,9 @@
     </li>
   </template>
 
+  <script src="./scripts/initialCards.js"></script>
   <script src="scripts/index.js"></script>
+  <script src="./scripts/validate.js"></script>
 
 </body>
 

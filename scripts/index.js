@@ -1,19 +1,3 @@
-const initialCards = [
-  { name: 'Адыгея',
-    link: './images/adigeya.jpg' },
-  { name: 'Алтай',
-    link: './images/altai.jpg' },
-  { name: 'Камчатка',
-    link: './images/kamchatka.jpg' },
-  { name: 'Мурманск',
-    link: './images/murmansk.jpg' },
-  { name: 'Шерегеш',
-    link: './images/sheregesh.jpg' },
-  { name: 'Сибирь',
-    link: './images/siberia.jpg' }
-];
-
-const popupMain = document.querySelector('.popup')
 const popupProfile = document.querySelector('.popup_profile')
 const popupPhotoPlace = document.querySelector('.popup_new-place')
 const popupPlaceImage = document.querySelector('.popup_place-image')
@@ -21,15 +5,11 @@ const popupPlaceImage = document.querySelector('.popup_place-image')
 const popupOpenButton = document.querySelector('.profile__edit-button')
 const popupOpenAddButton = document.querySelector('.profile__add-button')
 
-const popupCloseProfileButton = popupProfile.querySelector('.popup__close')
-const popupClosePlaceButton = popupMain.querySelector('.popup__close')
-const popupCloseImageButton = popupPlaceImage.querySelector('.popup__close')
-
 const profile = document.querySelector('.content')
 const nameProfile = profile.querySelector('.profile__name')
 const activityProfile = profile.querySelector('.profile__activity')
 const formFieldProfile = popupProfile.querySelector('.form')
-const formFieldPlace = popupMain.querySelector('.form')
+const formFieldPlace = popupProfile.querySelector('.form')
 
 const nameInput = formFieldProfile.querySelector('.form__field_profile_name')
 const activityInput = formFieldProfile.querySelector('.form__field_profile_activity')
@@ -42,7 +22,6 @@ const placesList = document.querySelector('.places__list')
 const template = document.querySelector('.template')
 
 renderPlaces();
-
 function renderPlaces() {
   const places = initialCards.map(getPlace);
   placesList.append(...places);
@@ -53,82 +32,117 @@ function getPlace(item) {
   const placeImage = newPlace.querySelector('.place__image');
   const placeTitle = newPlace.querySelector('.place__title');
   const placeLike = newPlace.querySelector('.place__like');
-  const openPopupPlacePhoto = newPlace.querySelector('.place__image');
   const placeDelete = newPlace.querySelector('.place__delete');
 
   placeImage.src = item.link;
   placeTitle.textContent = item.name;
   placeImage.alt = item.name;
+
   placeLike.addEventListener('click', likePlace);
   placeDelete.addEventListener('click', deletePlace);
 
-  openPopupPlacePhoto.addEventListener('click',() => {
+  placeImage.addEventListener('click',() => {
     placeImageName.textContent = item.name;
     placeImageImage.alt = item.name;
     placeImageImage.src = item.link;
-    togglePopup(popupPlaceImage);
+    popupOpen(popupPlaceImage);
   });
 
   return newPlace;
 }
 
-function deletePlace(event) {
-  const targetElement = event.target;
-  const targetItem = targetElement.closest('.place');
-  targetItem.remove();
+function deletePlace(evt) {
+  evt.target.closest('.place').remove();
+}
+function likePlace(evt) {
+  evt.target.classList.toggle('place__like_active');
+}
+
+function upProfileInfo(formElement) {
+  const inputList = Array.from(formElement.querySelectorAll(validationFields.inputSelector));
+  const buttonField = formElement.querySelector(validationFields.buttonSelector);
+
+  nameInput.value = nameProfile.textContent;
+  activityInput.value =  activityProfile.textContent;
+
+  checkInputValidation(formElement, nameInput, validationFields.inputErrorSelector, validationFields.spanErrorValidation);
+  checkInputValidation(formElement,  activityInput, validationFields.inputErrorSelector, validationFields.spanErrorValidation);
+  toggleButtonState(inputList, buttonField, validationFields.buttonDisabledClass);
 }
 
 function formPlaceHandler (evt) {
-  const pointPlace = pointInput.value;
-
-  const elementPlace = getPlace({name: pointPlace, link: urlPlace});
-  const urlPlace = urlInput.value;
   evt.preventDefault();
-  placesList.prepend(elementPlace);
-  pointInput.value = '';
-  urlInput.value = '';
-  togglePopup(popupPhotoPlace);
+  const namePlace = pointInput.value;
+  const urlPlace = urlInput.value;
+  const photoPlace = getPlace({name: namePlace, link: urlPlace});
+  placesList.prepend(photoPlace);
+
+  formFieldPlace.reset()
+  pointInput.dispatchEvent(new Event('input'));
+  urlInput.dispatchEvent(new Event('input'));
+  popupClose(popupPhotoPlace);
 }
-
-function likePlace(event) {
-  const targetElement = event.target;
-  targetElement.classList.toggle('place__like_active');
-}
-
-popupOpenAddButton.addEventListener('click',() => {
-  togglePopup(popupPhotoPlace);
-});
-popupClosePlaceButton.addEventListener('click',() => {
-  togglePopup(popupPhotoPlace);
-});
-popupCloseImageButton.addEventListener('click',() => {
-  togglePopup(popupPlaceImage);
-});
-
-formFieldPlace.addEventListener('submit', formPlaceHandler);
-
-formFieldProfile.addEventListener('submit', formProfileHandler);
 
 function formProfileHandler (evt) {
   evt.preventDefault();
   nameProfile.textContent = nameInput.value;
   activityProfile.textContent = activityInput.value;
-  togglePopup(popupProfile);
-}
-
-function togglePopup (popup) {
-  popup.classList.toggle('popup__opened');
-}
-
-function upProfileInfo() {
-  nameInput.value = nameProfile.textContent
-  activityInput.value = activityProfile.textContent;
+  popupClose(popupProfile);
 }
 
 popupOpenButton.addEventListener('click',() => {
-  upProfileInfo();
-  togglePopup(popupProfile);
+  upProfileInfo(formFieldProfile);
+  popupOpen(popupProfile);
 });
-popupCloseProfileButton.addEventListener('click',() => {
-  togglePopup(popupProfile);
+
+popupOpenAddButton.addEventListener('click',() => {
+  const inputPhotoCardList = Array.from(formFieldPlace.querySelectorAll('.form__field'));
+  inputPhotoCardList.forEach((inputElement) => {
+    if (!inputElement.value)  {
+      hideInputError(formFieldPlace, inputElement, validationFields.inputErrorSelector, validationFields.spanErrorValidation);
+    }
+  });
+
+  popupOpen(popupPhotoPlace);
 });
+function popupOpen (popupElement) {
+  popupElement.classList.add('popup__opened');
+  popupElement.addEventListener('click', addPopupCloseClickListener);
+
+  document.addEventListener('keydown', addPopupCloseEscListener);
+}
+
+
+function popupClose (popupElement) {
+  popupElement.classList.remove('popup__opened');
+  popupElement.removeEventListener('click', addPopupCloseClickListener);
+
+  document.removeEventListener('keydown', addPopupCloseEscListener);
+}
+function addPopupCloseClickListener(evt) {
+  if (evt.target.classList.contains('popup__close') || evt.target.classList.contains('popup') ) {
+    const popupOpen = evt.currentTarget
+
+    popupClose(popupOpen);
+  }
+}
+function addPopupCloseEscListener(evt) {
+  if (evt.key === "Escape") {
+    const popupOpen = document.querySelector('.popup__opened')
+
+    popupClose(popupOpen);
+  }
+}
+
+const validationFields = {
+  inputSelector:'.form__field',
+  buttonSelector: '.form__save',
+  buttonInactiveClass: 'form__save_inactive',
+  
+  inputErrorSelector: 'form__field_type_error',
+  spanErrorValidation: 'form__field-error_active',
+}
+
+formFieldPlace.addEventListener('submit', formPlaceHandler);
+
+formFieldProfile.addEventListener('submit', formProfileHandler);
