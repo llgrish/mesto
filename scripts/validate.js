@@ -1,9 +1,9 @@
-const checkInputValidation = (formField, inputField) => {
+const checkInputValidation = (formField, inputField, {inputErrorSelector, spanErrorValidation, ...rest}) => {
 
   if (!inputField.validity.valid) {
-    showInputError(formField, inputField, inputField.validationMessage, {inputErrorSelector, spanErrorValidation});
+    showInputError(formField, inputField, inputField.validationMessage, rest);
   } else {
-    hideInputError(formField, inputField, {inputErrorSelector, spanErrorValidation});
+    hideInputError(formField, inputField, rest);
   }
 };
 
@@ -24,19 +24,19 @@ const elemFields = {
     spanErrorValidation
   } = elemFields
  
-  const showInputError = (formField, inputField, errorMessage, {inputErrorSelector, spanErrorValidation}) => {
+  const showInputError = (formField, inputField, errorMessage, {inputErrorSelector, spanErrorValidation, ...rest}) => {
     const errorField = formField.querySelector(`.${inputField.name}-error`);
 
-    inputField.classList.add(inputErrorSelector);
+    inputField.classList.add(rest.inputErrorSelector);
     errorField.textContent = errorMessage;
 
-    errorField.classList.add(spanErrorValidation);
+    errorField.classList.add(rest.spanErrorValidation);
   };
 
-  const hideInputError = (formField, inputField, {inputErrorSelector, spanErrorValidation}) => {
+  const hideInputError = (formField, inputField, {inputErrorSelector, spanErrorValidation, ...rest}) => {
     const errorField = formField.querySelector(`.${inputField.name}-error`);
-    inputField.classList.remove(inputErrorSelector);
-    errorField.classList.remove(spanErrorValidation);
+    inputField.classList.remove(rest.inputErrorSelector);
+    errorField.classList.remove(rest.spanErrorValidation);
     errorField.textContent = '';
   };
 
