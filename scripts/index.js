@@ -60,15 +60,15 @@ function getPlace(item) {
 }
 
 function upProfileInfo(formElement) {
-  const inputList = Array.from(formElement.querySelectorAll(validationFields.inputSelector));
-  const buttonField = formElement.querySelector(validationFields.buttonSelector);
+  const inputList = Array.from(formElement.querySelectorAll(elemFields.inputSelector));
+  const buttonField = formElement.querySelector(elemFields.buttonSelector);
 
   nameInput.value = nameProfile.textContent;
   activityInput.value =  activityProfile.textContent;
 
-  checkInputValidation(formElement, nameInput, validationFields.inputErrorSelector, validationFields.spanErrorValidation);
-  checkInputValidation(formElement,  activityInput, validationFields.inputErrorSelector, validationFields.spanErrorValidation);
-  toggleButtonState(inputList, buttonField, validationFields.buttonDisabledClass);
+  checkInputValidation(formElement, nameInput, elemFields.inputErrorSelector, elemFields.spanErrorValidation);
+  checkInputValidation(formElement,  activityInput, elemFields.inputErrorSelector, elemFields.spanErrorValidation);
+  toggleButtonState(inputList, buttonField);
 }
 
 function formProfileHandler (evt) {
@@ -103,7 +103,7 @@ popupOpenAddButton.addEventListener('click',() => {
   const inputPhotoPlaceList = Array.from(document.querySelectorAll('.form__field'));
   inputPhotoPlaceList.forEach((inputElement) => {
     if (!inputElement.value)  {
-      hideInputError(document, inputElement, validationFields.inputErrorSelector, validationFields.spanErrorValidation);
+      hideInputError(document, inputElement, elemFields.inputErrorSelector, elemFields.spanErrorValidation);
     }
   });
 
@@ -136,15 +136,6 @@ function addPopupCloseEscListener(evt) {
 
     popupClose(popupOpen);
   }
-}
-
-const validationFields = {
-  inputSelector:'.form__field',
-  buttonSelector: '.form__save',
-  buttonInactiveClass: 'form__save_inactive',
-  
-  inputErrorSelector: 'form__field_type_error',
-  spanErrorValidation: 'form__field-error_active',
 }
 
 popupPhotoPlace.addEventListener('submit', formPlaceHandler);
