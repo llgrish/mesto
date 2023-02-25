@@ -1,9 +1,9 @@
 const checkInputValidation = (formField, inputField) => {
 
   if (!inputField.validity.valid) {
-    showInputError(formField, inputField, inputField.validationMessage);
+    showInputError(formField, inputField, inputField.validationMessage, {inputErrorSelector, spanErrorValidation});
   } else {
-    hideInputError(formField, inputField);
+    hideInputError(formField, inputField, {inputErrorSelector, spanErrorValidation});
   }
 };
 
@@ -24,7 +24,7 @@ const elemFields = {
     spanErrorValidation
   } = elemFields
 
-  const setEventListeners = (formField) => {
+  const setEventListeners = (formField, {inputSelector, buttonSelector, buttonDisabledClass}) => {
     const inputList = Array.from(formField.querySelectorAll(inputSelector));
     const buttonField = formField.querySelector(buttonSelector);
     
@@ -33,13 +33,13 @@ const elemFields = {
     inputList.forEach((inputField) => {
       inputField.addEventListener('input', function () {
         checkInputValidation(formField, inputField);
-        toggleButtonState(inputList, buttonField);
+        toggleButtonState(inputList, buttonField, buttonDisabledClass);
       });
 
     });
   };
  
-  const showInputError = (formField, inputField, errorMessage) => {
+  const showInputError = (formField, inputField, errorMessage, {inputErrorSelector, spanErrorValidation}) => {
     const errorField = formField.querySelector(`.${inputField.name}-error`);
 
     inputField.classList.add(inputErrorSelector);
@@ -47,16 +47,15 @@ const elemFields = {
 
     errorField.classList.add(spanErrorValidation);
   };
-  const hideInputError = (formField, inputField) => {
-    const errorField = formField.querySelector(`.${inputField.name}-error`);
 
+  const hideInputError = (formField, inputField, {inputErrorSelector, spanErrorValidation}) => {
+    const errorField = formField.querySelector(`.${inputField.name}-error`);
     inputField.classList.remove(inputErrorSelector);
     errorField.classList.remove(spanErrorValidation);
-
     errorField.textContent = '';
   };
   
-  const enableValidation = (elemFields) => {
+  const enableValidation = ({formSelector}) => {
     const formList = Array.from(document.querySelectorAll(formSelector));
 
     formList.forEach((formField) => {
@@ -64,7 +63,7 @@ const elemFields = {
         evt.preventDefault();
       });
 
-      setEventListeners(formField);
+      setEventListeners(formField, {inputSelector, buttonSelector, buttonDisabledClass});
     });
   };
 
@@ -86,4 +85,3 @@ const elemFields = {
   }
   
   enableValidation(elemFields);
-  

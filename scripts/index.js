@@ -147,6 +147,6 @@ const validationFields = {
   spanErrorValidation: 'form__field-error_active',
 }
 
-document.addEventListener('submit', formPlaceHandler);
+popupPhotoPlace.addEventListener('submit', formPlaceHandler);
 
 formFieldProfile.addEventListener('submit', formProfileHandler);
